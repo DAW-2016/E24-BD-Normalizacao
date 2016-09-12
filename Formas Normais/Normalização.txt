@@ -1,0 +1,77 @@
+1FN:
+  Uma entidade está na 1FN(Primeira Forma Normal), apenas quando todos os campos de uma
+  tabela forem atômicos ou seja, não possuirem mais de um valor para o mesmo campo.
+
+  Passos:
+    * Identificar a chave primária da entidade
+    * Encontrar e retirar a coluna não atômica
+    * Criar um nova entidade que ira armazernar, os dados da coluna não atomica
+    * Estabelecer um relação entre a entidade principal e a nova entidade
+
+  Exemplo:
+
+    Não normalizada em 1FN
+
+    Tabela Usuario
+    id|nome|email|         telefones         |
+     1| *  |  *  | 34270943, 997722540       |
+
+    Normalizada em 1FN
+
+    Tabela telefone
+    | Numero    | ID  |id_usuario |
+    | 34270943  |  1  |    1      |
+    | 997722540 |  1  |    1      |
+
+
+2FN:
+  Uma entidade está na 2FN(Segunda Forma Normal), apenas quando esta estiver em 1FN e não possuir dependências parciais.
+  Dependência parcial: um campo comum(não chave) da tabela não depende diretamente da chave primaria da tabela.
+
+  Passos:
+    * Identificar as colunas que possuem dependências parciais
+    * Retirar a coluna da tabela para uma nova tabela
+
+  Exemplo:
+
+  Não normalizada em 2FN
+
+  Tabela: Tarefas
+  |id_usuario|id_tarefa|descricao|data_limite|nome|email|
+
+  nome e email dependem apenas de id_usuario
+  descricao e data_limite dependem apenas de id_tarefa
+
+  Normalizada em 2FN
+
+  Tabela: usuario
+  |id_usuario|nome|email|
+
+  Tabela: tarefa
+  |id_tarefa|descricao|data_limite|
+
+3FN:
+  Uma entidade está na 3FN(Terceira Forma Normal), apenas quando esta estiver em 1FN,2FN e não possuir dependência trasitiva.
+  Dependência transitiva: Um campo comum depende de outro campo comum.
+
+  Passos:
+    * Identificar as colunas que possuem dependência transitiva
+    * Retirar as colunas para uma nova tabela
+    * Relacionar a nova tabela com a antiga
+
+  Exemplo:
+
+  Não normalizada em 3FN
+
+  Tabela: funcionarios
+  |id|nome|funcao|salario|
+
+  nome depende de id
+
+  salario depende de salario
+
+  Normalizada em 3FN
+
+  |id|nome|id_funcao|
+
+  |id|nome|salario|
