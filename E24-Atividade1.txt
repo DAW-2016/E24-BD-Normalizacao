@@ -1,0 +1,11 @@
+Formas Normais
+	
+ 1FN: Não admite repetições ou campos que tenham mais que um valor.
+   Como aplicar: 
+     a) Identificar a chave primária da entidade
+     b) Identificar o grupo repetitivo e removê-lo da entidade
+     c) Criar uma nova entidade com a chave primária da entidade anterior e o grupo repetitivo 
+   Exemplo:
+	Tabela clientes(cod_cliente,nome,tel,endereço).
+	  -> Normalização 1: clientes(cod_cliente,nome,tel,rua,bairro,cep)
+	  -> Normalização 2: clientes(cod_cliente,nome,rua,bairro,cep) e telefones(cod_cliente,tel)	
