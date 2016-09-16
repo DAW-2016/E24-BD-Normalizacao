@@ -1,0 +1,49 @@
+1FN
+  -> A primeira forma normal diz respeito à divisibilidade de um campo da tabela,
+  se ele está armazenando mais de um valor(ou seja pode ser dividido) ele deve ser
+  removido da presente tabela e transferido para uma outra entidade onde cada campo
+  possui um valor individual e indivisível.
+
+  Exemplo:
+  Um sistema de cadastro de funcionários nos quais temos os campos:
+
+  ID | Nome | Cargo | Idiomas|
+
+  Em algum caso, teremos um funcionário que fala mais de um idioma, e não é recomendável
+  que coloquemos mais de um dado na mesma coluna, então, pela 1FN iremos separar a entidade
+  da seguinte maneira:
+
+  Funcionário                     Idioma
+  ID | Nome | Cargo (N) ----> (N) |ID|usuarioID|Nome
+
+
+2FN
+  -> A segunda forma normal trata da dependência que as colunas de dados possuem
+  com a coluna de chave. Se temos uma PK composta, ou seja formada por várias colunas
+  e pelo menos uma coluna de dados é dependente de apenas parte dessa PK composta
+  temos uma dependência parcial que deve ser corrigida pela segunda forma normal,
+  na qual separamos as colunas que dependem de apenas parte da chave em um número
+  maior de entidades nas quais todas as colunas de dados vão depender integralmente da PK.
+
+  Exemplo:
+  Podemos usar como exemplo uma tabela que indica fabricantes de carros
+
+  Empresa | Modelo | Versão | Pais
+
+  Se queremos acessar um Uno por exemplo, ao acessar a versão 2014 dependemos apenas do
+  modelo como PK para acessar essa informação, a empresa é secundária. Podemos dividir a
+  entidade da seguinte maneira:
+
+  Empresa                    Carro
+  ID|Nome|País| 1 ------> N |EmpresaID|Modelo|Versão|
+
+
+3FN
+  -> A terceira forma normal vai ser aplicada quando em uma tabela (que já foi submetida
+  às duas formas anteriores) tivermos uma coluna de dados que depende de outra, sem haver
+  uma dependência da PK. Se for o caso, iremos separar essas colunas de dados em uma nova
+  tabela e então criar uma relação entre essa tabela criada e sua tabela "mãe".
+
+  Exemplo:
+
+  Uma competição na Olimpíada
