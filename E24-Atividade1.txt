@@ -9,3 +9,12 @@ Formas Normais
 	Tabela clientes(cod_cliente,nome,tel,endereço).
 	  -> Normalização 1: clientes(cod_cliente,nome,tel,rua,bairro,cep)
 	  -> Normalização 2: clientes(cod_cliente,nome,rua,bairro,cep) e telefones(cod_cliente,tel)	
+ 2FN: Deve estar na 1FN e todos os atributos que não são chave são totalmente dependentes da chave primária
+   Como aplicar:
+     a) Identificar os atributos que não são funcionalmente dependentes de toda a chave primária;
+     b) Remover da entidade todos esses atributos identificados e criar uma nova entidade com eles.
+   Exemplo:
+	Tabela vendas(n_pedido,cod_produto,produto,quant,valor_un,subtotal)
+	  -> Normalização 1: produtos(cod_produto,produto) e vendas(n_pedido,cod_produto,quant,valor_un,subtotal)
+
+
