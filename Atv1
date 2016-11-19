@@ -1,0 +1,48 @@
+1FN:
+
+A primeira forma normal se baseia no fato de que um campo da tabela deva armazenar apenas um valor, caso ele necessite armazenar mais de um valor deve ser separado em outra tabela para melhor organizaçao.
+
+Exemplo:
+
+Numa lista telefonica em que uma pessoa possui mais de um telefone:
+
+Antes:
+Pessoa<id, nome, telefones, endereco>
+
+Depois:
+Pessoa<id, nome, endereco>
+Telefone<id, numero, pessoa_id>
+
+
+
+2FN
+
+A segunda forma normal diz que todos os dados em uma tabela devem depender integralmente da PK, caso contrario podem e devem ser separados em outra tabela.
+
+Exemplo:
+
+Num sistema academico em que um professor dá aula para varios alunos:
+
+Antes:
+Aluno<id, nome, professor>
+
+Depois:
+Aluno<id, nome, professor_id>
+Professor<id, nome>
+
+
+
+3FN
+
+A terceira forma normal deve ser aplicada quando um campo da tabela depende de outro sem relação com a PK, sendo assim este campo deve ser separado em outra tabela.
+
+Exemplo:
+
+Numa biblioteca em relação ao tema dos livros:
+
+Antes:
+Livro<id, nome, tema>
+
+Depois:
+Livro<id, nome, tema_id>
+Tema<id, nome>
